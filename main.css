@@ -5,12 +5,9 @@ body {
 h1 {
 	text-align: center;
 }
+
 /*****CARD STYLING*****/
-#product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+
 
 .product {
 	width: 400px;
@@ -42,4 +39,30 @@ h1 {
 	text-align: center;
 	text-transform: uppercase;
 }
+
+/*****CARD LAYOUT*****/
+
+#product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/*****SOLD OUT*****/
+
+.product {
+	position: relative;
+}
+
+.sold-out {
+	position: absolute;
+	top: 90px;
+}
+
+
+
+
+
+
+
 
