@@ -62,13 +62,13 @@ for (var i = 0; i < allProducts.length; i++) {
 	var domString = "";
 
 		domString += '<section class="product">';
-	    domString +=    '<div class="title">';
+	    domString +=    '<div class="title child">';
 	    domString +=    '<h2>' + currentProduct.name +'</h2>';
 	    domString +=    '</div>';
-	    domString +=    '<div class="image">;'
+	    domString +=    '<div class="image chilc">;'
 	    domString +=      '<img src="' +currentProduct.imagePath+' "alt="'+currentProduct.imageAlt+'">';
 	    domString +=    '</div>';
-	    domString +=    '<div class="description">';
+	    domString +=    '<div class="description child">';
 	    domString +=     ' <p>' + currentProduct.description +'</p>';
 	    domString +=      '<h6>' + currentProduct.price +'</h6>';
 	    domString +=    '</div>';
@@ -79,14 +79,44 @@ for (var i = 0; i < allProducts.length; i++) {
 };
 
 
+function printProductArrayToDom(productArray) {
+    for(var i = 0; i < productArray.length; i++) {
+
+    var currentProduct = productArray[i];
+    var productDomString = domString;
+    productContainer.innerHTML += productDomString;
+  }
+};
+
+printProductArrayToDom(allProducts);
 
 
+//click on card to change border
 
+var selectedCard;
 
+document.getElementById("product-container").addEventListener("click", function() {
+  changeTheBorder(event);
+  printSelectedDescription();
+});
 
+function changeTheBorder(event) {
+  if(event.target.classList.contains("child")) {
+    selectedCard = event.target.parentNode;
+  }else if(event.target.parentNode.parentNode.classList.contains("product")) {
+    selectedCard = event.target.parentNode.parentNode;
+  }else if(event.target.classList.contains("product")) {
+    selectedCard = event.target;
+  }
+  selectedCard.classList.add("border"); //added border so .border in css to add border
+}
 
+//added extra child class to get children of card
 
-
+function printSelectedDescription() {
+  var description = selectedCard.childNodes[2].childNodes[1].innerHTML; //description is index[2] in child array then -- index[1] has <p> that holds description
+  console.log(description);
+}
 
 
 
